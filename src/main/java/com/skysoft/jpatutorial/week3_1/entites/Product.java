@@ -9,7 +9,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Users_test")
+@Table(
+        schema = "schema_products",
+        name = "Products",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "price_name_cons", columnNames = {"name_en","price"}),
+                @UniqueConstraint(name = "name_cons", columnNames = "name_en")
+        },
+        indexes ={
+                @Index(name = "index1",columnList = "sku,name_en")
+        }
+)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
@@ -25,10 +35,10 @@ public class Product {
     @Column(length = 150,nullable = false)
     private Double price;
     @CreationTimestamp
-    @Column(length = 150,nullable = false, updatable = false,name = "created_at")
+    @Column(length = 150,name = "created_at")
     private LocalDateTime created;
     @UpdateTimestamp
-    @Column(length = 150,nullable = false, updatable = false, name = "updated_at")
+    @Column(length = 150,  name = "updated_at")
     private LocalDateTime modified;
 
 }
