@@ -2,6 +2,8 @@ package com.skysoft.jpatutorial.week3_1.entites;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -20,8 +22,10 @@ import java.time.LocalDateTime;
                 @Index(name = "index1",columnList = "sku,name_en")
         }
 )
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
