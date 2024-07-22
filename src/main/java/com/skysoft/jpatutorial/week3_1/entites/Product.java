@@ -14,10 +14,7 @@ import java.time.LocalDateTime;
 @Table(
         schema = "schema_products",
         name = "Products",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "price_name_cons", columnNames = {"name_en","price"}),
-                @UniqueConstraint(name = "name_cons", columnNames = "name_en")
-        },
+
         indexes ={
                 @Index(name = "index1",columnList = "sku,name_en")
         }
@@ -32,7 +29,7 @@ public class Product {
     private int id;
     @Column(unique = true)
     private String sku;
-    @Column(length = 100,nullable = false, unique = true,name = "name_en")
+    @Column(length = 100,nullable = false, name = "name_en")
     private String name;
     @Column(length = 150,nullable = false)
     private String description;
