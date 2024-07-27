@@ -1,6 +1,7 @@
 package com.skysoft.jpatutorial.week3_1.repositries;
 
 import com.skysoft.jpatutorial.week3_1.entites.Product;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     void deleteProductByNameAndPrice(String name, Double price);
     List<Product> findByNameContainingIgnoreCase(String name);
     List<Product> findByNameLikeIgnoreCase(String name);
+    List<Product> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }
